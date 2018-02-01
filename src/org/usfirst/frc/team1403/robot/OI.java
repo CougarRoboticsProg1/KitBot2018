@@ -10,12 +10,9 @@ package org.usfirst.frc.team1403.robot;
 
 
 
-import org.usfirst.frc.team1403.robot.commands.ClampAndPlatform;
-import org.usfirst.frc.team1403.robot.commands.Push;
-import org.usfirst.frc.team1403.robot.commands.Release;
-import org.usfirst.frc.team1403.robot.commands.RemovePlatformAndRetract;
-import org.usfirst.frc.team1403.robot.commands.Retract;
-import org.usfirst.frc.team1403.robot.commands.ReleaseAndPush;
+
+import org.usfirst.frc.team1403.robot.commands.Eject;
+import org.usfirst.frc.team1403.robot.commands.Intake;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -28,27 +25,35 @@ public class OI {
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
+	
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
 	public Joystick djoy = new Joystick(0);
 	public Joystick ojoy = new Joystick(1);
-	Button xojoy = new JoystickButton(ojoy,3);
-	Button aojoy = new JoystickButton(ojoy,1);
-	Button yojoy = new JoystickButton(ojoy,4);
-	Button bojoy = new JoystickButton(ojoy,2);
-	Button rbojoy = new JoystickButton(ojoy,6);
-	Button lbojoy = new JoystickButton(ojoy,5);
-	Button startojoy = new JoystickButton(ojoy,8);
-	public OI() {
-		bojoy.whenPressed(new Retract());
-		rbojoy.whenPressed(new ReleaseAndPush());
-		yojoy.whenPressed(new Release());
-		startojoy.whenPressed(new ClampAndPlatform());
-		xojoy.whenPressed(new Push());
-		lbojoy.whenPressed(new RemovePlatformAndRetract());
-
 	
-		
+	
+	
+	Button aojoy = new JoystickButton(ojoy,1);
+	Button bojoy = new JoystickButton(ojoy,2);
+	Button xojoy = new JoystickButton(ojoy,3);
+	Button yojoy = new JoystickButton(ojoy,4);
+	Button lbojoy = new JoystickButton(ojoy,5);
+	Button rbojoy = new JoystickButton(ojoy,6);
+	Button startojoy = new JoystickButton(ojoy,8);
+	
+	Button adjoy = new JoystickButton(djoy,1);
+	Button bdjoy = new JoystickButton(djoy,2);
+	Button xdjoy = new JoystickButton(djoy,3);
+	Button ydjoy = new JoystickButton(djoy,4);
+	Button lbdjoy = new JoystickButton(djoy,5);
+	Button rbdjoy = new JoystickButton(djoy,6);
+	Button startdjoy = new JoystickButton(djoy,8);
+	
+	
+	public OI() {
+	/*	xojoy.whileHeld(new Intake());
+		aojoy.whileHeld(new Eject());
+	*/
 	
 	}
 	// Button button = new JoystickButton(stick, buttonNumber);

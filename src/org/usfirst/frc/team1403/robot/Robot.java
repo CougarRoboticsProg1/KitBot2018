@@ -12,39 +12,37 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team1403.robot.commands.ControlRollers;
 import org.usfirst.frc.team1403.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1403.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1403.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team1403.robot.subsystems.Manipulation;
-import org.usfirst.frc.team1403.robot.subsystems.Manipulation2;
+import org.usfirst.frc.team1403.robot.subsystems.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.properties file in the
- * project.
+ * project.+
  */
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
 	public static DriveTrain dt;
-	public static Manipulation maniPulate;
-	public static Manipulation2 maniPulate2;
+	public static Intake intake;
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-
-	/**
+	/**																																																																																																																																																																																														`																																																																																																																																																																																																																																																																																																																																																																																																														
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	@Override
 	public void robotInit() {
 		dt = new DriveTrain();
-		maniPulate = new Manipulation();
-		maniPulate2 =  new Manipulation2();
+		intake =  new Intake();
 		m_oi = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -58,7 +56,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
 	}
 
 	@Override
@@ -68,7 +65,7 @@ public class Robot extends TimedRobot {
 
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
+	 * between different autonomQous modes using the dashboard. The sendable
 	 * chooser code works with the Java SmartDashboard. If you prefer the
 	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
 	 * getString code to get the auto name from the text box below the Gyro
@@ -119,6 +116,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("LeftRoller Speed", ControlRollers.rollerSpeed);
+		SmartDashboard.putNumber("RightRoller Speed", ControlRollers.rollerSpeed);
 	}
 
 	/**

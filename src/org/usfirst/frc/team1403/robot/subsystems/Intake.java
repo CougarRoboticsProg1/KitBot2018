@@ -1,6 +1,9 @@
 package org.usfirst.frc.team1403.robot.subsystems;
 
-import org.usfirst.frc.team1403.robot.commands.RollersWithJoystick;
+
+
+import org.usfirst.frc.team1403.robot.RobotMap;
+import org.usfirst.frc.team1403.robot.commands.ControlRollers;
 
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -8,16 +11,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Manipulation2 extends Subsystem {
+public class Intake extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
 	public Victor rightRollers, leftRollers;
 	
-	public Manipulation2() {
-		rightRollers = new Victor(4);
-		leftRollers = new Victor(7);
+	public Intake() {
+		rightRollers = new Victor(RobotMap.rightRollersPort);
+		leftRollers = new Victor(RobotMap.leftRollersPort);
 	}
 	public void manipulate(double leftRoll, double rightRoll) {
 		rightRollers.set(rightRoll);
@@ -25,7 +28,6 @@ public class Manipulation2 extends Subsystem {
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new RollersWithJoystick());
+      setDefaultCommand(new ControlRollers());
     }
 }
-

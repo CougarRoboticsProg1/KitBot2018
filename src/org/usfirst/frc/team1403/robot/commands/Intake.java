@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Manipulate2 extends Command {
+public class Intake extends Command {
 
-    public Manipulate2() {
+    public Intake() {
         // Use requires() here to declare subsystem dependencies
-         requires(Robot.maniPulate2);
+         requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +20,7 @@ public class Manipulate2 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.maniPulate2.manipulate(1,-1);
+    	Robot.intake.manipulate(0.6,-0.6);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,10 +30,11 @@ public class Manipulate2 extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intake.manipulate(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-}
+}  
